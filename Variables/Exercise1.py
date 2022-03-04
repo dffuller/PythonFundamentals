@@ -1,38 +1,93 @@
+import doctest
 #lists
-a = [1,2,3];b=a;b[1] = 9; print(a,b)
-# [1, 9, 3] [1, 9, 3]
+def list_test_1():
+  """
+  lists are mutable
+  >>> list_test_1()
+  ([1, 9, 3], [1, 9, 3])
+  """
+  a = [1,2,3];b=a;b[1] = 9; 
+  return (a,b)
 
-#ints
-c=1; d=c; d=2; print(c,d)
-# 1 2
+def list_test_2():
+  """
+  >>> list_test_2()
+  ([1, 2, 3], [4, 5, 6])
+  """
+  a = [1,2,3]; b=a; b=[4,5,6]
+  return (a,b)
 
-#float
-a = 1.0; b=a; b=2.0; print(a,b)
-# 1.0 2.0
+# ints
+def int_test():
+  """
+  >>> int_test()
+  (1, 2)
+  """
+  a=1; b=a; b=2
+  return (a,b)
+ 
+#floats
+def float_test():
+  """
+  >>> float_test()
+  (1.0, 2.0)
+  """
+  a = 1.0; b=a; b=2.0
+  return (a,b)
 
 #str
-a = "hello"; b=a; b[0] = 'j'; print(a,b)
-# ---------------------------------------------------------------------------
-# TypeError                                 Traceback (most recent call last)
-# <ipython-input-13-eacb5227c6d7> in <module>
-# ----> 1 a = "hello"; b=a; b[0] = 'j'; print(a,b)
-# 
-# TypeError: 'str' object does not support item assignment
-a = "hello"; b=a;b = "jello"; print(a,b)
-# hello jello
+def str_test_1():
+  """
+  strings are immutable
+  >>> str_test_1()
+  Traceback (most recent call last):
+      ...
+  TypeError: 'str' object does not support item assignment
+  """
+  a = "hello"; b=a; b[0] = 'j'; print(a,b)
+  return (a,b)
+def str_test_2():
+  """
+  >>> str_test_2()
+  ('hello', 'jello')
+  """
+  a = "hello"; b=a;b = "jello"
+  return (a, b)
 
-#tuple
-a = (1,2,3); b=a; b[0]=4; print(a,b)
-# ---------------------------------------------------------------------------
-# TypeError                                 Traceback (most recent call last)
-# <ipython-input-17-05bfc35e8ba6> in <module>
-# ----> 1 a = (1,2,3); b=a; b[0]=4; print(a,b)
-# 
-# TypeError: 'tuple' object does not support item assignment
-a = (1,2,3); b=a; b=(4,5,6); print(a,b)
-# (1, 2, 3) (4, 5, 6)
+#tuples
+def tuple_test_1():
+  """
+  tuples are immutable
+  >>> tuple_test_1()
+  Traceback (most recent call last):
+      ...
+  TypeError: 'tuple' object does not support item assignment
+  """
+  a = (1,2,3); b=a; b[0]=4
+  return (a, b)
+def tuple_test_2():
+  """
+  >>> tuple_test_2()
+  ((1, 2, 3), (4, 5, 6))
+  """
+  a = (1,2,3); b=a; b=(4,5,6)
+  return (a, b)  
 
-#dict
-a = dict(a=1, b=2); b=a; b['a']=3; print(a,b)
-# {'a': 3, 'b': 2} {'a': 3, 'b': 2}
-a = dict(a=1, b=2); b=a; a=dict(a=2,b=4); print(a,b)
+# dictionaries
+def dict_test_1():
+  """
+  >>> dict_test_1()
+  ({'a': 3, 'b': 2}, {'a': 3, 'b': 2})
+  """
+  a = dict(a=1, b=2); b=a; b['a']=3
+  return (a, b)
+def dict_test_2():
+  """
+  >>> dict_test_2()
+  ({'a': 2, 'b': 4}, {'a': 1, 'b': 2})
+  """
+  a = dict(a=1, b=2); b=a; a=dict(a=2,b=4)
+  return (a, b)
+
+if __name__ == "__main__":
+  doctest.testmod()
